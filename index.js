@@ -1,6 +1,14 @@
 const jsonServer = require('json-server');
+const dotenv = require('dotenv');
 
-const data = require('./data');
+dotenv.config();
+
+const generateData = require('./data');
+
+const count = process.env.DATA_COUNT;
+const seed = process.env.DATA_SEED;
+
+const data = generateData(Number(count), Number(seed));
 
 const server = jsonServer.create();
 const router = jsonServer.router(data);

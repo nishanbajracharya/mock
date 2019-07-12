@@ -1,18 +1,16 @@
-const faker = require('faker');
+const defaults = require('./constants');
 
-const seed = 314;
+function generateData(count = defaults.COUNT, seed = defaults.SEED) {
+  const faker = require('faker');
 
-faker.seed(seed);
+  faker.seed(seed);
 
-const count = 100;
-
-function generateData() {
   const users = [];
 
   for (let id = 1; id < count; id++) {
-    const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
-    const email = faker.internet.email();
+    const firstName = faker.name.firstName();
+    const email = faker.internet.email().toLowerCase();
     const phone = faker.phone.phoneNumber('(###) ###-####');
 
     const address = {
@@ -21,8 +19,8 @@ function generateData() {
       country: faker.address.country(),
       zipCode: faker.address.zipCode(),
       countryCode: faker.address.countryCode(),
-      streetAddress: faker.address.streetAddress(),
-    }
+      streetAddress: faker.address.streetAddress()
+    };
 
     const profileImage = faker.image.avatar();
 
@@ -33,11 +31,11 @@ function generateData() {
       address,
       lastName,
       firstName,
-      profileImage,
+      profileImage
     });
   }
 
   return { users };
-};
+}
 
-module.exports = generateData();
+module.exports = generateData;
