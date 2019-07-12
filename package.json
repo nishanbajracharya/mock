@@ -1,0 +1,20 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "Mock Rest API with fake data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mock",
+    "rest"
+  ],
+  "author": "Nishan Bajracharya <nisbaj11@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "json-server": "^0.15.0"
+  }
+}
