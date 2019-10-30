@@ -5,6 +5,7 @@ function generateData(count = defaults.COUNT, seed = defaults.SEED) {
 
   faker.seed(seed);
 
+  // Users
   const users = [];
 
   for (let id = 1; id < count; id++) {
@@ -35,7 +36,26 @@ function generateData(count = defaults.COUNT, seed = defaults.SEED) {
     });
   }
 
-  return { users };
+  // Locations
+  const locations = [];
+
+  for (let id = 1; id < count; id++) {
+    const address = {
+      id,
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
+      zipCode: faker.address.zipCode(),
+      latitude: faker.address.latitude(),
+      longitude: faker.address.longitude(),
+      countryCode: faker.address.countryCode(),
+      streetAddress: faker.address.streetAddress(),
+    };
+
+    locations.push(address);
+  }
+
+  return { users, locations };
 }
 
 module.exports = generateData;
